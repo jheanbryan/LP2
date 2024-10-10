@@ -10,25 +10,31 @@ export class BankAccount {
     this.number = number;
     this.branch = branch;
     this._balance = 0;
-    this.client = new Client('', '');
+    this.client = client;
   }
 
-  deposit(value: number) {
-    if (value > 0) this._balance += value;
-    else console.log("Value must be positive");
+  deposit(value: number): void {
+    if (value > 0) {
+      this._balance += value;
+    } else {
+      console.log("Value must be positive");
+    }
   }
 
-  withdraw(value: number) {
-    if (value > 0 || value <= this._balance) this._balance -= value;
-    else console.log("value must be positive and equal or lower than balance");
+  withdraw(value: number): void {
+    if (value > 0 && value <= this._balance) {
+      this._balance -= value;
+    } else {
+      console.log("Value must be positive and equal or lower than _balance");
+    }
   }
 
-  statement(){
-    const formater = Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
+  statement(): string {
+    const formatter = Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "brl",
     });
-    return formater.format(this._balance)
+
+    return formatter.format(this._balance);
   }
 }
-
