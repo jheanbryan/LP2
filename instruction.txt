@@ -1,0 +1,36 @@
+Crie a pasta do projeto com o nome especificado em aula pelo professor;
+Abra a pasta no VS Code;
+No VS Code, abra a terminar (Prompt de Comando) e verifique se o Yarn está instalado, executando o comando: 
+yarn -v
+Caso o Yarn não esteja instalado (comando não encontrado), instale ele com o comando: 
+npm i -g yarn
+Após, inicialize o projeto com o Yarn:
+yarn init -y
+Instale as dependências básicas dos projetos da LP2:
+yarn add -D typescript @types/node ts-node jest ts-jest @types/jest
+Na raíz do projeto, crie o arquivo tsconfig.json com o seguinte conteúdo:
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "es5",
+        "lib": ["es5", "es6"]
+    }
+}
+No arquivo package.json, crie o bloco de scripts (prerencialmente abaixo da propriedade license) com o seguinte conteúdo:
+"scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest --watchAll --coverage"
+},
+Na raíz do projeto, crie o arquivo jest.config.ts com o seguinte conteúdo:
+import type { Config } from "jest";
+
+const config: Config = {
+    verbose: true,
+    preset: "ts-jest",
+    testEnvironment: "node",
+};
+
+export default config;
+
+instalar Jest
+yarn add -D jest ts-jest

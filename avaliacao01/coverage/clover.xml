@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1728526567061" clover="3.2.0">
+  <project timestamp="1728526567061" name="All files">
+    <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5" elements="23" coveredelements="23" complexity="0" loc="14" ncloc="14" packages="1" files="1" classes="1"/>
+    <file name="PositiveArray.ts" path="C:\Users\aluno\Documents\jhean\LP2\avaliacao01\src\models\PositiveArray.ts">
+      <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="8" count="6" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="5" type="cond" truecount="1" falsecount="0"/>
+      <line num="17" count="3" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="27" count="2" type="cond" truecount="3" falsecount="0"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="44" count="6" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
