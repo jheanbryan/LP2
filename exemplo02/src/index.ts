@@ -3,14 +3,13 @@ import { Contact } from "./models/Contact";
 const contact = new Contact();
 
 try {
-    //acessa o setter de __name
-    contact.name =  "John Doe";
+  // Acessa o setter de  _name
+  contact.name = "Sid";
 } catch (err) {
-    console.log(err)
+  console.log(err);
 }
 
-
-
-//acessa  o setter de __email
+// Acessa o getter de _name
 const contactName = contact.name;
 console.log(contactName);
+console.log("Mal feito desfeito");

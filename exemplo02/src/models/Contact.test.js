@@ -1,6 +1,6 @@
 import { Contact } from './Contact'
 import { ContactCreationError } from '../errors/ContactCreationError';
-import { ContactErrorMessages' } from '../enums/contactErrorMessages';
+import { ContactErrorMessages } from '../enums/contactErrorMessages';
 
 describe('Tests over Contact Class', () => {
     it('shoud create a contact with valid inputs', () => {
@@ -27,17 +27,25 @@ describe('Tests over Contact Class', () => {
 
     it('should not create a contact with invalid name', () => {
         const nameValue = 'Tu';
-        const phoneValue = '(99)  9999-9999';
-        const email = 'fulano@email.com';
-
         try {
             const contact = new Contact;
             contact.name = nameValue;
-            contact.phone = phoneValue;
-            contact.email = emailValue;
+            fail('It allowed to set an invalid name')
             
         } catch (error) {
-            expect(err.)
+            expect(err).toBeInstanceOf(ContactCreationError);
+            expect(err.message).toBe(ContactErrorMessages.NAME_ERROR_MESSAGE);
         }
     });
+
+    it('should not create a contact with invalid phone number', () => {
+        const contact = new Contact();
+        fail('It allowed to set an invalid number')
+        try{
+            contact.phone = '1234-1234';
+        } catch(err) {
+            expect(err).toBeInstanceOf(ContactCreationError);
+            expect(err.message).toBe(ContactErrorMessages.PHONE_ERROR_MESSAGE);
+        };
+    })
 });
