@@ -1,0 +1,17 @@
+Considere o modelo de dados a seguir:
+
+Produto:
+
+- descrição* (textual, no mínimo 10 caracteres)
+
+- quantidade em estoque* (numérico, entre 0 e 99)
+
+- preço* (numérico, no mínimo 1)
+
+- código* (código no formato AAA-0000)
+
+- data de entrada no estoque* (data, não pode ser uma data futura)
+
+Crie uma classe para modelar Produto, utilizando métodos de acesso para proteger o ajuste dos valores dos atributos. Crie uma classe de erro customizada para devolver mensagens de erro específicas para cada atributo ajustado incorretamente.
+
+Após, crie uma suíte de testes para testar o caso de sucesso (criação de um objeto de produto com valores válidos) e todos os possíveis casos de erro.
