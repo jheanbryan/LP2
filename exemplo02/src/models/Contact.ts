@@ -24,9 +24,11 @@ export class Contact {
 
   //phone
   set phone(phone: string) {
-    if (/^\(d{2}\)\s\d{5}-d{4}$/.test(phone)) this.__phone = phone;
-    else
+    if (/^\(\d{2}\)\s\d{5}-\d{4}$/.test(phone)) {
+      this.__phone = phone;
+    } else {
       throw new ContactCreationError(ContactErrorMessages.PHONE_ERROR_MESSAGE);
+    }
   }
 
   get phone() {
