@@ -11,12 +11,8 @@ describe('Tests over Contact Class', () => {
         const addressValue = 'Rua da Praia, 123, São Paulo, SP';
         const birthdayValue = new Date('2011-11-11');
 
-        const contact = new Contact;
-        contact.name = nameValue;
-        contact.phone = phoneValue;
-        contact.email = emailValue;
-        contact.address = addressValue;
-        contact.birthday = birthdayValue;
+        const contact = new Contact(nameValue, phoneValue,  emailValue, addressValue, birthdayValue);
+
 
         expect(contact.name).toBe(nameValue)
         expect(contact.phone).toBe(phoneValue)
@@ -27,9 +23,11 @@ describe('Tests over Contact Class', () => {
 
     it('should not create a contact with invalid name', () => {
         const nameValue = 'Tu';
+        const phoneValue = '(00) 00000-0000';
+        const emailValue = 'ciclano@gmail.com';
+
         try {
-            const contact = new Contact;
-            contact.name = nameValue;
+            const contact = new Contact(nameValue, phoneValue, emailValue);
             fail("It allowed to set an invalid name")
             
         } catch (err) {
@@ -39,9 +37,12 @@ describe('Tests over Contact Class', () => {
     });
 
     it('should not create a contact with invalid phone number', () => {
-        const contact = new Contact();
+        const nameValue = 'Ciclano';
+        const phoneValue = '1234-1234';
+        const emailValue = 'ciclano@gmail.com';
+
         try{
-            contact.phone = '1234-1234';
+            const contact = new Contact(nameValue, phoneValue, emailValue);
             fail("It allowed to set an invalid number")
 
         } catch(err) {
@@ -51,9 +52,12 @@ describe('Tests over Contact Class', () => {
     })
 
     it('should not create a contact with invalid email', () => {
-        const contact = new Contact();
+        const nameValue = 'Ciclano';
+        const phoneValue = '(00) 00000-0000';
+        const emailValue = 'jo';
+
         try{
-            contact.email = 'jo';
+            const contact = new Contact(nameValue, phoneValue, emailValue);
             fail("It allowed to set an invalid email")
         } catch(err) {
             expect(err).toBeInstanceOf(ContactCreationError);
@@ -62,9 +66,13 @@ describe('Tests over Contact Class', () => {
     });
 
     it('should not create a contact with invalid address', () => {
-        const contact = new Contact();
+        const nameValue = 'Ciclano';
+        const phoneValue = '(00) 00000-0000';
+        const emailValue = 'ciclano@gmail.com';
+        const addressValue = 'ee';
+
         try{
-            contact.address = 'ee';
+            const contact = new Contact(nameValue, phoneValue, emailValue, addressValue);
             fail("It allowed to set an invalid address")
         } catch(err) {
             expect(err).toBeInstanceOf(ContactCreationError);
@@ -74,9 +82,13 @@ describe('Tests over Contact Class', () => {
 
     
     it('should not create a contact with invalid birthday', () => {
-        const contact = new Contact();
+        const nameValue = 'Ciclano';
+        const phoneValue = '(00) 00000-0000';
+        const emailValue = 'ciclano@gmail.com';
+        const birthdayValue = new Date('2025-12-12');
+
         try{
-            contact.birthday = new Date('2025-12-12');
+            const contact = new Contact(nameValue, phoneValue, emailValue, birthdayValue);
             fail("It allowed to set an invalid birthday")
         } catch(err) {
             expect(err).toBeInstanceOf(ContactCreationError);
