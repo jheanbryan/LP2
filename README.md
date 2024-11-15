@@ -13,3 +13,5 @@ Criação de classe para cadastro de usuário além de testes unitários com jes
 ## exercicio01 - Classe e testes para produtos
 Exercício semelhante ao exemplo002, mudando apenas os requisitos
 
+## prova01
+Avaliaçao 1 da disciplina
