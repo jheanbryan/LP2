@@ -1,15 +1,5 @@
 import { Database } from "sqlite3";
-import db from '../config/database';
-
-export class GenericDao<T extends { id: number }> {
-    private db: Database;
-
-    constructor() {
-        this.db = db;
-    };
-
-
-}
+import initDataBase from  '../database/initDataBase';
 
 export type Criteria = {
   field: string;
@@ -17,7 +7,7 @@ export type Criteria = {
   value: string | number;
 };
 
-export class GenericDao<T extends { id: number }> {
+export class GenericDao<T> {
   private db: Database;
   private tableName: string;
 
@@ -26,27 +16,25 @@ export class GenericDao<T extends { id: number }> {
     this.tableName = tableName;
   }
 
-  async create(entity: T): Promise<void> {
+  async create(entity: T): Promise<boolean> {
     const keys = Object.keys(entity).join(", ");
-    const values = Object.values(entity)
-      .map(() => "?")
-      .join(", ");
-
+    const values = Object.values(entity).map(() => "?").join(", ");
     const sql = `INSERT INTO ${this.tableName} (${keys}) VALUES (${values})`;
-
+  
     return new Promise((resolve, reject) => {
       this.db.run(sql, Object.values(entity), function (err) {
         if (err) reject(err);
-        else resolve();
+        else resolve(true);
       });
     });
   }
+  
 
   async read(id: number): Promise<T | null> {
     const sql = `SELECT * FROM ${this.tableName} WHERE id = ?`;
 
     return new Promise((resolve, reject) => {
-      this.db.get(sql, [id], (err, row) => {
+      this.db.get(sql, [id], (err, row: T) => {
         if (err) reject(err);
         else resolve(row || null);
       });
@@ -82,7 +70,7 @@ export class GenericDao<T extends { id: number }> {
     const sql = `SELECT * FROM ${this.tableName}`;
 
     return new Promise((resolve, reject) => {
-      this.db.all(sql, [], (err, rows) => {
+      this.db.all(sql, [], (err, rows: T[]) => {
         if (err) reject(err);
         else resolve(rows);
       });
@@ -93,7 +81,7 @@ export class GenericDao<T extends { id: number }> {
     const sql = `SELECT * FROM ${this.tableName} WHERE ${criteria.field} ${criteria.op} ?`;
 
     return new Promise((resolve, reject) => {
-      this.db.all(sql, [criteria.value], (err, rows) => {
+      this.db.all(sql, [criteria.value], (err, rows: T[]) => {
         if (err) reject(err);
         else resolve(rows);
       });
